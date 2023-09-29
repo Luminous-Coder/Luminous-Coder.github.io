@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #10A0FF;
+}
+
+a:hover {
+  text-shadow: 0 0 1px #10A0FF;
+}
+
+.btn {
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: min-content;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  background-color: #000000;
+}
+
+.dropdown-menu > * {
+  margin: 8px 0;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+body {
+  color: #FFFFFF;
+  background-color: #1E1E1E;
+}
+
+footer {
+  padding: 8px;
+  text-align: center;
+  background-color: #000000;
+}

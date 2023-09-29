@@ -1,0 +1,311 @@
+{
+  "characters": {
+    "arlan": {
+      "path": "destruction",
+      "type": "lightning",
+      "hpMax": 163.2,
+      "atk": 81.6,
+      "def": 45,
+      "spd": 102,
+      "energy": 110
+    },
+    "asta": {
+      "path": "harmony",
+      "type": "fire",
+      "hpMax": 139,
+      "atk": 69.6,
+      "def": 63,
+      "spd": 106,
+      "energy": 120
+    },
+    "bailu": {
+      "path": "abundance",
+      "type": "lightning",
+      "hpMax": 180,
+      "atk": 76.56,
+      "def": 66,
+      "spd": 98,
+      "energy": 100
+    },
+    "blade": {
+      "path": "destruction",
+      "type": "wind",
+      "hpMax": 185,
+      "atk": 73.92,
+      "def": 66,
+      "spd": 97,
+      "energy": 130
+    },
+    "bronya": {
+      "path": "harmony",
+      "type": "wind",
+      "hpMax": 169,
+      "atk": 79.2,
+      "def": 72.6,
+      "spd": 99,
+      "energy": 120
+    },
+    "clara": {
+      "path": "destruction",
+      "type": "physical",
+      "hpMax": 169,
+      "atk": 100.32,
+      "def": 66,
+      "spd": 90,
+      "energy": 110
+    },
+    "danheng": {
+      "path": "hunt",
+      "type": "wind",
+      "hpMax": 120,
+      "atk": 74.4,
+      "def": 54,
+      "spd": 110,
+      "energy": 100
+    },
+    "fuxuan": {
+      "path": "preservation",
+      "type": "quantum",
+      "hpMax": 201,
+      "atk": 63.36,
+      "def": 82.5,
+      "spd": 100,
+      "energy": 135
+    },
+    "gepard": {
+      "path": "preservation",
+      "type": "ice",
+      "hpMax": 190,
+      "atk": "73.92",
+      "def": 89.1,
+      "spd": 92,
+      "energy": 100
+    },
+    "herta": {
+      "path": "erudition",
+      "type": "ice",
+      "hpMax": 130,
+      "atk": 79.2,
+      "def": 54,
+      "spd": 100,
+      "energy": 110
+    },
+    "himeko": {
+      "path": "erudition",
+      "type": "fire",
+      "hpMax": 143,
+      "atk": 102.96,
+      "def": 59.4,
+      "spd": 96,
+      "energy": 120
+    },
+    "hook": {
+      "path": "destruction",
+      "type": "fire",
+      "hpMax": 182,
+      "atk": 84,
+      "def": 48,
+      "spd": 94,
+      "energy": 120
+    },
+    "jingyuan": {
+      "path": "erudition",
+      "type": "lightning",
+      "hpMax": 158,
+      "atk": 95.04,
+      "def": 66,
+      "spd": 99,
+      "energy": 130
+    },
+    "kafka": {
+      "path": "nihility",
+      "type": "lightning",
+      "hpMax": 148,
+      "atk": 92.4,
+      "def": 66,
+      "spd": 100,
+      "energy": 120
+    },
+    "luka": {
+      "path": "nihility",
+      "type": "physical",
+      "hpMax": 125,
+      "atk": 79.2,
+      "def": 66,
+      "spd": 103,
+      "energy": 130
+    },
+    "luocha": {
+      "path": "abundance",
+      "type": "imaginary",
+      "hpMax": 174,
+      "atk": 102.96,
+      "def": 49.5,
+      "spd": 101,
+      "energy": 100
+    },
+    "lynx": {
+      "path": "abundance",
+      "type": "quantum",
+      "hpMax": 144,
+      "atk": 67.2,
+      "def": 75,
+      "spd": 100,
+      "energy": 100
+    },
+    "march7th": {
+      "path": "preservation",
+      "type": "ice",
+      "hpMax": 144,
+      "atk": 69.6,
+      "def": 78,
+      "spd": 101,
+      "energy": 120
+    },
+    "natasha": {
+      "path": "abundance",
+      "type": "physical",
+      "hpMax": 158,
+      "atk": 64.8,
+      "def": 69,
+      "spd": 98,
+      "energy": 90
+    },
+    "pela": {
+      "path": "nihility",
+      "type": "ice",
+      "hpMax": 134,
+      "atk": 74.4,
+      "def": 63,
+      "spd": 105,
+      "energy": 110
+    },
+    "qingque": {
+      "path": "erudition",
+      "type": "quantum",
+      "hpMax": 139,
+      "atk": 88.8,
+      "def": 60,
+      "spd": 98,
+      "energy": 140
+    },
+    "sampo": {
+      "path": "nihility",
+      "type": "wind",
+      "hpMax": 139,
+      "atk": 84,
+      "def": 54,
+      "spd": 102,
+      "energy": 120
+    },
+    "seele": {
+      "path": "hunt",
+      "type": "quantum",
+      "hpMax": 127,
+      "atk": 87.12,
+      "def": 49.5,
+      "spd": 115,
+      "energy": 120
+    },
+    "serval": {
+      "path": "erudition",
+      "type": "lightning",
+      "hpMax": 125,
+      "atk": 88.8,
+      "def": 51,
+      "spd": 104,
+      "energy": 100
+    },
+    "silverWolf": {
+      "path": "nihility",
+      "type": "quantum",
+      "hpMax": 143,
+      "atk": 87.12,
+      "def": 62.7,
+      "spd": 107,
+      "energy": 110
+    },
+    "sushang": {
+      "path": "hunt",
+      "type": "physical",
+      "hpMax": 125,
+      "atk": 76.8,
+      "def": 57,
+      "spd": 107,
+      "energy": 120
+    },
+    "tingyun": {
+      "path": "harmony",
+      "type": "lightning",
+      "hpMax": 115,
+      "atk": 72,
+      "def": 54,
+      "spd": 112,
+      "energy": 130
+    },
+    "trailblazerDestruction": {
+      "path": "destruction",
+      "type": "physical",
+      "hpMax": 164,
+      "atk": 84.48,
+      "def": 62.7,
+      "spd": 100,
+      "energy": 120
+    },
+    "trailblazerPreservation": {
+      "path": "preservation",
+      "type": "fire",
+      "hpMax": 169,
+      "atk": 81.84,
+      "def": 82.5,
+      "spd": 95,
+      "energy": 120
+    },
+    "welt": {
+      "path": "nihility",
+      "type": "imaginary",
+      "hpMax": 153,
+      "atk": 84.48,
+      "def": 69.3,
+      "spd": 102,
+      "energy": 120
+    },
+    "yanqing": {
+      "path": "hunt",
+      "type": "ice",
+      "hpMax": 121,
+      "atk": 92.4,
+      "def": 56.1,
+      "spd": 109,
+      "energy": 140
+    },
+    "yinyue": {
+      "path": "destruction",
+      "type": "imaginary",
+      "hpMax": 169,
+      "atk": 95.04,
+      "def": 49.5,
+      "spd": 102,
+      "energy": 140
+    },
+    "yukong": {
+      "path": "harmony",
+      "type": "imaginary",
+      "hpMax": 125,
+      "atk": 81.6,
+      "def": 51,
+      "spd": 107,
+      "energy": 130
+    }
+  },
+  "breakBase": [
+      54.00,   58.00,   62.00,   67.53,   70.51,   73.52,   76.57,   79.64,   82.74,   85.87,
+      91.49,   97.07,  102.59,  108.06,  113.47,  118.84,  124.15,  129.41,  134.62,  139.77,
+     149.33,  158.80,  168.18,  177.46,  186.65,  195.75,  204.75,  213.66,  222.48,  231.20,
+     246.43,  261.18,  275.47,  289.32,  302.73,  315.71,  328.29,  340.47,  352.26,  363.67,
+     408.12,  451.79,  494.68,  536.82,  578.22,  618.92,  658.91,  698.23,  736.89,  774.90,
+     871.06,  964.87, 1056.42, 1145.79, 1233.06, 1318.30, 1401.58, 1482.96, 1562.52, 1640.31,
+    1752.32, 1861.90, 1969.12, 2074.07, 2176.80, 2277.39, 2375.91, 2472.42, 2566.97, 2659.64,
+    2780.30, 2898.60, 3014.60, 3128.37, 3239.98, 3349.47, 3456.92, 3562.38, 3665.91, 3767.55
+  ]
+}
