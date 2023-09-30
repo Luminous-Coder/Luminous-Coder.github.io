@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./main.css" />
     <script src="character-sim.js"></script>
+
+    <template id="panel">
+      <div>HP: <span class="hp"></span></div>
+      <div>ATK: <span class="atk"></span></div>
+      <div>DEF: <span class="def"></span></div>
+      <div>SPD: <span class="spd"></span></div>
+    </template>
   </head>
   <body>
     <main>
       <div class="character">
-        <div class="character-select">
-          <span class="btn"></span>
-          <ul class="dropdown-menu" hidden=""></ul>
-        </div>
-        <ul class="character-panel">
-          <li>HP: <span class="hp"></span></li>
-          <li>ATK: <span class="atk"></span></li>
-          <li>DEF: <span class="def"></span></li>
-          <li>SPD: <span class="spd"></span></li>
-        </ul>
       </div>
     </main>
     <footer>

@@ -28,40 +28,80 @@
     }
   }
 
+  function Button() {
+    let result = document.createElement('span');
+    result.className = 'button';
+    return result;
+  }
+
+  function Dropdown(items) {
+    let result = document.createElement('div');
+    let state = false;
+
+    let btn = Button();
+    btn.addEventListener('click', () => {
+      state = !state;
+      render();
+    });
+    result.appendChild(btn);
+
+    let menu = document.createElement('ul');
+    menu.className = 'dropdown-menu';
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        state = false;
+        render();
+        result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: item.dataset.value}}));
+      });
+      menu.appendChild(item);
+    });
+    result.appendChild(menu);
+
+    const render = () => {
+      menu.hidden = !state;
+    };
+    render();
+
+    Object.defineProperty(result, 'button', {
+      get() {
+        return btn;
+      },
+    });
+    return result;
+  }
+
   for (const elm of document.getElementsByClassName('character')) { // Character component.
     let renderers = [];
-    const setState = (update) => {
-      update();
-      renderers.forEach((f) => f());
-    };
-
-    let state = {
+    let state = new Proxy({
       character: null,
-    };
+    }, {
+      set(state, key, newValue) {
+        state[key] = newValue;
+        renderers.forEach((f) => f());
+        return true;
+      },
+    });
 
-    { // Character selection subcomponent.
-      const characterSelect = elm.getElementsByClassName('character-select')[0];
-      let characterSelectState = false;
-      const [btn, menu] = characterSelect.children;
-      btn.addEventListener('click', () => setState(() => {
-        characterSelectState = !characterSelectState;
-      }));
-      renderers.push(() => btn.innerText = state.character ?? 'Character');
-      for (const character in data.characters) {
-        const item = document.createElement('li');
-        item.innerText = character;
-        item.dataset.value = character;
-        item.addEventListener('click', () => {
-          setState(() => state.character = item.dataset.value);
-          setState(() => characterSelectState = false);
-        });
-        menu.appendChild(item);
+    let characterDropdown = Dropdown((() => {
+      let result = [];
+      for (const name in data.characters) {
+        let item = document.createElement('li');
+        item.dataset.value = name;
+        item.innerText = name;
+        result.push(item);
       }
-      renderers.push(() => menu.hidden = !characterSelectState);
-    }
+      return result;
+    })());
+    characterDropdown.button.innerText = 'Character';
+    characterDropdown.addEventListener('lmn-select', (event) => {
+      state.character = event.detail.selection;
+      characterDropdown.button.innerText = event.detail.selection;
+    });
+    elm.appendChild(characterDropdown);
 
     { // Character panel subcomponent.
-      const panel = elm.getElementsByClassName('character-panel')[0];
+      let panel = document.createElement('div');
+      panel.replaceChildren(document.getElementById('panel').content.cloneNode(true))
       renderers.push(() => {
         if (!state.character) return;
         const character = getCharacter(state.character, 80);
@@ -70,6 +110,7 @@
         panel.getElementsByClassName('def')[0].innerText = character.def;
         panel.getElementsByClassName('spd')[0].innerText = character.spd;
       });
+      elm.appendChild(panel);
     }
 
     renderers.forEach((f) => f());
