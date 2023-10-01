@@ -100,15 +100,15 @@
     elm.appendChild(characterDropdown);
 
     { // Character panel subcomponent.
-      let panel = document.createElement('div');
-      panel.replaceChildren(document.getElementById('panel').content.cloneNode(true))
+      let panel = document.createElement('ul');
+      panel.className = 'panel';
+      panel.replaceChildren(document.getElementById('template-panel').content.cloneNode(true));
       renderers.push(() => {
         if (!state.character) return;
         const character = getCharacter(state.character, 80);
-        panel.getElementsByClassName('hp')[0].innerText = character.hpMax;
-        panel.getElementsByClassName('atk')[0].innerText = character.atk;
-        panel.getElementsByClassName('def')[0].innerText = character.def;
-        panel.getElementsByClassName('spd')[0].innerText = character.spd;
+        for (const attribute of panel.children) {
+          attribute.getElementsByClassName('panel-value')[0].innerText = character[attribute.dataset.key];
+        }
       });
       elm.appendChild(panel);
     }

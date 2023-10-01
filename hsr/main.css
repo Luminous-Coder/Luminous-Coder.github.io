@@ -17,6 +17,7 @@ a:hover {
   cursor: pointer;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
+  margin: 8px;
 }
 
 .dropdown-menu {
@@ -25,6 +26,7 @@ a:hover {
   border: 1px solid #696969;
   border-radius: 4px;
   background-color: #000000;
+  list-style: none;
 }
 
 .dropdown-menu > * {
@@ -42,4 +44,33 @@ footer {
   padding: 8px;
   text-align: center;
   background-color: #000000;
+}
+
+main {
+  display: flex;
+}
+
+.character {
+  margin: 16px auto;
+}
+
+.panel {
+  margin: 8px;
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 16vw;
+}
+
+.panel > * {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.panel-name {
+  margin-right: auto;
+}
+
+.panel-value {
+  margin-left: auto;
 }
