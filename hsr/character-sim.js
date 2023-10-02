@@ -24,8 +24,12 @@
     const base = data.lightCones[name];
     let result = {lvl: Math.floor(lvl), ...base};
     for (const x of ['hpMax', 'atk', 'def']) {
-      result[x] = base[x] * (1 + ((result.lvl)));
+      result[x] = base[x] * (1 + ((result.lvl - 1) * 0.15));
+      let i = countAscension(lvl);
+      if (i-- > 0) result[x] += base[x] * 1.2;
+      while (i-- > 0) result[x] += base[x] * 1.6;
     }
+    return result;
   }
 
   function Button() {
