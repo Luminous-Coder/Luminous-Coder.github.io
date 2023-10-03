@@ -13,20 +13,22 @@ a:hover {
 }
 
 .button {
+  margin: 8px;
   padding: 2px;
   cursor: pointer;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
-  margin: 8px;
 }
 
 .dropdown-menu {
   position: absolute;
   width: min-content;
+  list-style: none;
   border: 1px solid #696969;
   border-radius: 4px;
   background-color: #000000;
-  list-style: none;
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 .dropdown-menu > * {
@@ -55,11 +57,11 @@ main {
 }
 
 .panel {
-  margin: 8px;
-  list-style: none;
   display: flex;
   flex-flow: column nowrap;
   width: 16vw;
+  margin: 8px;
+  list-style: none;
 }
 
 .panel > * {
