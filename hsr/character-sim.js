@@ -34,12 +34,13 @@
 
   function Button() {
     let result = document.createElement('span');
-    result.className = 'button';
+    result.classList.add('button');
     return result;
   }
 
   function Dropdown(items) {
     let result = document.createElement('div');
+    result.classList.add('dropdown');
     let state = false;
 
     let btn = Button();
@@ -50,7 +51,7 @@
     result.appendChild(btn);
 
     let menu = document.createElement('ul');
-    menu.className = 'dropdown-menu';
+    menu.classList.add('dropdown-menu');
     items.forEach((item) => {
       item.addEventListener('click', () => {
         state = false;
@@ -110,6 +111,7 @@
       }
       return result;
     })());
+    characterDropdown.classList.add('character-dropdown');
     characterDropdown.button.innerText = 'Character';
     characterDropdown.addEventListener('lmn-select', (event) => {
       state.character = getCharacter(event.detail.selection, 80);
@@ -119,15 +121,15 @@
   }
   { // Character panel subcomponent.
     let panel = document.createElement('ul');
-    panel.className = 'panel';
+    panel.classList.add('panel');
     for (const name in state.character) {
       let item = document.createElement('li');
       let panelName = document.createElement('span');
-      panelName.className = 'panel-name';
+      panelName.classList.add('panel-name');
       panelName.innerText = name;
       item.appendChild(panelName);
       let panelValue = document.createElement('span');
-      panelValue.className = 'panel-value';
+      panelValue.classList.add('panel-value');
       renderers.push(() => panelValue.innerText = state.character[name]);
       item.appendChild(panelValue);
       panel.appendChild(item);
