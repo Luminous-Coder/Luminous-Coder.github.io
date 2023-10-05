@@ -48,10 +48,6 @@ footer {
   background-color: #000000;
 }
 
-main {
-  display: flex;
-}
-
 .panel {
   display: flex;
   flex-flow: column nowrap;

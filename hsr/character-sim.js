@@ -76,15 +76,29 @@
 
   const app = document.getElementById('app');
   let renderers = [];
-  let state = new Proxy({
-    character: null,
-  }, {
-    set(state, key, newValue) {
-      state[key] = newValue;
-      renderers.forEach((f) => f());
-      return true;
+  let state = new Proxy(
+    {
+      character: {
+        lvl: '',
+        critRate: '',
+        critDmg: '',
+        path: '',
+        type: '',
+        hpMax: '',
+        atk: '',
+        def: '',
+        spd: '',
+        energy: '',
+      },
     },
-  });
+    {
+      set(state, key, newValue) {
+        state[key] = newValue;
+        renderers.forEach((f) => f());
+        return true;
+      },
+    },
+  );
   { // Character dropdown subcomponent.
     let characterDropdown = Dropdown((() => {
       let result = [];
@@ -98,7 +112,7 @@
     })());
     characterDropdown.button.innerText = 'Character';
     characterDropdown.addEventListener('lmn-select', (event) => {
-      state.character = event.detail.selection;
+      state.character = getCharacter(event.detail.selection, 80);
       characterDropdown.button.innerText = event.detail.selection;
     });
     app.appendChild(characterDropdown);
@@ -106,24 +120,18 @@
   { // Character panel subcomponent.
     let panel = document.createElement('ul');
     panel.className = 'panel';
-    const render = () => {
-      if (!state.character) return;
-      panel.replaceChildren();
-      let character = getCharacter(state.character, 80);
-      for (const [name, value] of Object.entries(character)) {
-        let item = document.createElement('li');
-        let panelName = document.createElement('span');
-        panelName.className = 'panel-name';
-        panelName.innerText = name;
-        item.appendChild(panelName);
-        let panelValue = document.createElement('span');
-        panelValue.className = 'panel-value';
-        panelValue.innerText = value;
-        item.appendChild(panelValue);
-        panel.appendChild(item);
-      }
-    };
-    renderers.push(render);
+    for (const name in state.character) {
+      let item = document.createElement('li');
+      let panelName = document.createElement('span');
+      panelName.className = 'panel-name';
+      panelName.innerText = name;
+      item.appendChild(panelName);
+      let panelValue = document.createElement('span');
+      panelValue.className = 'panel-value';
+      renderers.push(() => panelValue.innerText = state.character[name]);
+      item.appendChild(panelValue);
+      panel.appendChild(item);
+    }
     app.appendChild(panel);
   }
 
