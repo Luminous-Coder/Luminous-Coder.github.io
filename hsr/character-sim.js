@@ -54,13 +54,18 @@
     menu.classList.add('dropdown-menu');
     items.forEach((item) => {
       item.addEventListener('click', () => {
-        state = false;
-        render();
         result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: item.dataset.value}}));
       });
       menu.appendChild(item);
     });
     result.appendChild(menu);
+
+    document.addEventListener('click', (event) => {
+      if (event.target !== btn) {
+        state = false;
+        render();
+      }
+    });
 
     const render = () => {
       menu.hidden = !state;
