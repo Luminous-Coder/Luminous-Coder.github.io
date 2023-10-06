@@ -72,6 +72,9 @@
     };
     render();
 
+    result.setSelection = function (value) {
+      result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: value}}));
+    };
     Object.defineProperty(result, 'button', {
       get() {
         return btn;
@@ -84,18 +87,7 @@
   let renderers = [];
   let state = new Proxy(
     {
-      character: {
-        lvl: '',
-        critRate: '',
-        critDmg: '',
-        path: '',
-        type: '',
-        hpMax: '',
-        atk: '',
-        def: '',
-        spd: '',
-        energy: '',
-      },
+      character: null,
     },
     {
       set(state, key, newValue) {
@@ -117,11 +109,11 @@
       return result;
     })());
     characterDropdown.classList.add('character-dropdown');
-    characterDropdown.button.innerText = 'Character';
     characterDropdown.addEventListener('lmn-select', (event) => {
       state.character = getCharacter(event.detail.selection, 80);
       characterDropdown.button.innerText = event.detail.selection;
     });
+    characterDropdown.setSelection('arlan');
     app.appendChild(characterDropdown);
   }
   { // Character panel subcomponent.
