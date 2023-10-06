@@ -1,22 +1,18 @@
 (async () => {
-  const data = await (await fetch('data.json')).json();
+  const BASE_URL = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master';
+  const LANG = 'cht';
 
   function countAscension(lvl) {
     return Math.ceil((lvl - 20) / 10);
   }
 
-  function getCharacter(name, lvl) {
-    const base = data.characters[name];
-    let result = {
-      lvl: Math.floor(lvl),
-      critRate: 0.05,
-      critDmg: 1.5,
-      ...base,
-    };
-    for (const x of ['hpMax', 'atk', 'def']) {
-      result[x] = base[x] * (1 + ((result.lvl - 1) * 0.05) + (countAscension(lvl) * 0.4));
+  async function getCharacter(id, lvl) {
+    const response = await fetch(`${BASE_URL}/index_min/${LANG}/character_promotions.json`);
+    const data = await response.json();
+    let result = data[id].values[countAscension(lvl)];
+    for (const key in result) {
+      result[key] = result[key].base + result[key].step * Math.floor(lvl - 1);
     }
-    result.hp = result.hpMax;
     return result;
   }
 
@@ -98,39 +94,44 @@
     },
   );
   { // Character dropdown subcomponent.
+    const response = await fetch(`${BASE_URL}/index_min/${LANG}/characters.json`);
+    const data = await response.json();
     let characterDropdown = Dropdown((() => {
       let result = [];
-      for (const name in data.characters) {
+      for (const x of Object.values(data)) {
         let item = document.createElement('li');
-        item.dataset.value = name;
-        item.innerText = name;
+        item.dataset.value = x.id;
+        item.innerText = x.name;
         result.push(item);
       }
       return result;
     })());
     characterDropdown.classList.add('character-dropdown');
-    characterDropdown.addEventListener('lmn-select', (event) => {
-      state.character = getCharacter(event.detail.selection, 80);
-      characterDropdown.button.innerText = event.detail.selection;
+    characterDropdown.addEventListener('lmn-select', async (event) => {
+      state.character = await getCharacter(event.detail.selection, 80);
+      characterDropdown.button.innerText = data[event.detail.selection].name;
     });
-    characterDropdown.setSelection('arlan');
+    characterDropdown.setSelection(1001);
     app.appendChild(characterDropdown);
   }
   { // Character panel subcomponent.
     let panel = document.createElement('ul');
     panel.classList.add('panel');
-    for (const name in state.character) {
-      let item = document.createElement('li');
-      let panelName = document.createElement('span');
-      panelName.classList.add('panel-name');
-      panelName.innerText = name;
-      item.appendChild(panelName);
-      let panelValue = document.createElement('span');
-      panelValue.classList.add('panel-value');
-      renderers.push(() => panelValue.innerText = state.character[name]);
-      item.appendChild(panelValue);
-      panel.appendChild(item);
-    }
+    renderers.push(() => {
+      panel.replaceChildren();
+      for (const key in state.character) {
+        let item = document.createElement('li');
+        let panelName = document.createElement('span');
+        panelName.classList.add('panel-name');
+        panelName.innerText = key;
+        item.appendChild(panelName);
+        let panelValue = document.createElement('span');
+        panelValue.classList.add('panel-value');
+        panelValue.innerText = state.character[key];
+        item.appendChild(panelValue);
+        panel.appendChild(item);
+      }
+    });
     app.appendChild(panel);
   }
 
