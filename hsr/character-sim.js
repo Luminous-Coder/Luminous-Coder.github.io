@@ -1,31 +1,46 @@
 (async () => {
-  const BASE_URL = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master';
-  const LANG = 'cht';
+  const data = await (await fetch('data.json')).json();
+
+  let lang = 'zh-TW';
 
   function countAscension(lvl) {
     return Math.ceil((lvl - 20) / 10);
   }
 
-  async function getCharacter(id, lvl) {
-    const response = await fetch(`${BASE_URL}/index_min/${LANG}/character_promotions.json`);
-    const data = await response.json();
-    let result = data[id].values[countAscension(lvl)];
-    for (const key in result) {
-      result[key] = result[key].base + result[key].step * Math.floor(lvl - 1);
+  function getCharacter(id, lvl) {
+    const {name, rarity, path, type, ...base} = data.characters[id];
+    let result = {
+      lvl: Math.floor(lvl),
+      critRate: 0.05,
+      critDmg: 1.5,
+      ...base,
+    };
+    for (const x of ['hp', 'atk', 'def']) {
+      result[x] = base[x] * (1 + ((result.lvl - 1) * 0.05) + (countAscension(lvl) * 0.4));
     }
     return result;
   }
 
-  function getLightCone(name, lvl) {
-    const base = data.lightCones[name];
+  function getLightCone(id, lvl) {
+    const {name, rarity, path, ...base} = data.lightCones[id];
     let result = {lvl: Math.floor(lvl), ...base};
-    for (const x of ['hpMax', 'atk', 'def']) {
+    for (const x of ['hp', 'atk', 'def']) {
       result[x] = base[x] * (1 + ((result.lvl - 1) * 0.15));
       let i = countAscension(lvl);
       if (i-- > 0) result[x] += base[x] * 1.2;
-      while (i-- > 0) result[x] += base[x] * 1.6;
+      result[x] += base[x] * 1.6 * i;
     }
     return result;
+  }
+
+  function addStats(...factors) {
+    return factors.reduce((sum, value) => {
+      for (const key in value) {
+        if (!sum[key]) sum[key] = 0;
+        sum[key] += value[key];
+      }
+      return sum;
+    });
   }
 
   function Button() {
@@ -48,12 +63,16 @@
 
     let menu = document.createElement('ul');
     menu.classList.add('dropdown-menu');
-    items.forEach((item) => {
-      item.addEventListener('click', () => {
-        result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: item.dataset.value}}));
+    result.setItems = function (items) {
+      menu.replaceChildren();
+      items.forEach((item) => {
+        item.addEventListener('click', () => {
+          result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: item.dataset.value}}));
+        });
+        menu.appendChild(item);
       });
-      menu.appendChild(item);
-    });
+    }
+    result.setItems(items);
     result.appendChild(menu);
 
     document.addEventListener('click', (event) => {
@@ -83,7 +102,11 @@
   let renderers = [];
   let state = new Proxy(
     {
-      character: null,
+      character: '',
+      characterResult: null,
+      lightCone: '',
+      lightConeResult: null,
+      result: null,
     },
     {
       set(state, key, newValue) {
@@ -93,45 +116,62 @@
       },
     },
   );
+  let lightConeDropdown = Dropdown([]);
+  lightConeDropdown.button.classList.add('block');
+  lightConeDropdown.addEventListener('lmn-select', (event) => {
+    state.lightCone = event.detail.selection;
+    state.lightConeResult = getLightCone(state.lightCone, 80);
+    state.result = addStats(state.characterResult, state.lightConeResult);
+    lightConeDropdown.button.textContent = data.lightCones[state.lightCone].name[lang];
+  });
   { // Character dropdown subcomponent.
-    const response = await fetch(`${BASE_URL}/index_min/${LANG}/characters.json`);
-    const data = await response.json();
-    let characterDropdown = Dropdown((() => {
-      let result = [];
-      for (const x of Object.values(data)) {
+    let characterDropdownItems = [];
+    for (const id in data.characters) {
+      let item = document.createElement('li');
+      item.dataset.value = id;
+      item.textContent = data.characters[id].name[lang];
+      characterDropdownItems.push(item);
+    }
+    let characterDropdown = Dropdown(characterDropdownItems);
+    characterDropdown.button.classList.add('block');
+    characterDropdown.addEventListener('lmn-select', (event) => {
+      state.character = event.detail.selection;
+      state.characterResult = getCharacter(state.character, 80);
+      state.result = addStats(state.characterResult, state.lightConeResult);
+      characterDropdown.button.textContent = data.characters[state.character].name[lang];
+
+      let items = [];
+      let availableLightConeIds = Object.entries(data.lightCones)
+        .filter(([k, v]) => v.path === data.characters[state.character].path)
+        .map(([k, v]) => k);
+      for (const id of availableLightConeIds) {
         let item = document.createElement('li');
-        item.dataset.value = x.id;
-        item.innerText = x.name;
-        result.push(item);
+        item.dataset.value = id;
+        item.textContent = data.lightCones[id].name[lang];
+        items.push(item);
       }
-      return result;
-    })());
-    characterDropdown.classList.add('character-dropdown');
-    characterDropdown.addEventListener('lmn-select', async (event) => {
-      state.character = await getCharacter(event.detail.selection, 80);
-      characterDropdown.button.innerText = data[event.detail.selection].name;
+      lightConeDropdown.setItems(items);
+      lightConeDropdown.setSelection(availableLightConeIds[0]);
     });
-    characterDropdown.setSelection(1001);
+    characterDropdown.setSelection('0000');
     app.appendChild(characterDropdown);
   }
+  app.appendChild(lightConeDropdown);
   { // Character panel subcomponent.
     let panel = document.createElement('ul');
     panel.classList.add('panel');
-    renderers.push(() => {
-      panel.replaceChildren();
-      for (const key in state.character) {
-        let item = document.createElement('li');
-        let panelName = document.createElement('span');
-        panelName.classList.add('panel-name');
-        panelName.innerText = key;
-        item.appendChild(panelName);
-        let panelValue = document.createElement('span');
-        panelValue.classList.add('panel-value');
-        panelValue.innerText = state.character[key];
-        item.appendChild(panelValue);
-        panel.appendChild(item);
-      }
-    });
+    for (const statName of ['hp', 'atk', 'def', 'spd', 'critRate', 'critDmg']) {
+      let item = document.createElement('li');
+      let panelName = document.createElement('span');
+      panelName.classList.add('panel-name');
+      panelName.textContent = data.stats[statName];
+      item.appendChild(panelName);
+      let panelValue = document.createElement('span');
+      panelValue.classList.add('panel-value');
+      renderers.push(() => panelValue.textContent = state.result[statName].toFixed(2));
+      item.appendChild(panelValue);
+      panel.appendChild(item);
+    }
     app.appendChild(panel);
   }
 

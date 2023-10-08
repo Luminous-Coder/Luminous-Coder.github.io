@@ -1,301 +1,1215 @@
 {
   "characters": {
-    "arlan": {
-      "path": "destruction",
-      "type": "lightning",
-      "hpMax": 163.2,
-      "atk": 81.6,
-      "def": 45,
-      "spd": 102,
-      "energy": 110
-    },
-    "asta": {
-      "path": "harmony",
-      "type": "fire",
-      "hpMax": 139,
-      "atk": 69.6,
-      "def": 63,
-      "spd": 106,
-      "energy": 120
-    },
-    "bailu": {
-      "path": "abundance",
-      "type": "lightning",
-      "hpMax": 180,
-      "atk": 76.56,
-      "def": 66,
-      "spd": 98,
-      "energy": 100
-    },
-    "blade": {
-      "path": "destruction",
-      "type": "wind",
-      "hpMax": 185,
-      "atk": 73.92,
-      "def": 66,
-      "spd": 97,
-      "energy": 130
-    },
-    "bronya": {
-      "path": "harmony",
-      "type": "wind",
-      "hpMax": 169,
-      "atk": 79.2,
-      "def": 72.6,
-      "spd": 99,
-      "energy": 120
-    },
-    "clara": {
-      "path": "destruction",
-      "type": "physical",
-      "hpMax": 169,
-      "atk": 100.32,
-      "def": 66,
-      "spd": 90,
-      "energy": 110
-    },
-    "danheng": {
-      "path": "hunt",
-      "type": "wind",
-      "hpMax": 120,
-      "atk": 74.4,
-      "def": 54,
-      "spd": 110,
-      "energy": 100
-    },
-    "fuxuan": {
-      "path": "preservation",
-      "type": "quantum",
-      "hpMax": 201,
-      "atk": 63.36,
-      "def": 82.5,
-      "spd": 100,
-      "energy": 135
-    },
-    "gepard": {
+    "0000": {
+      "name": {
+        "zh-TW": "三月七"
+      },
+      "rarity": 4,
       "path": "preservation",
       "type": "ice",
-      "hpMax": 190,
-      "atk": "73.92",
-      "def": 89.1,
-      "spd": 92,
-      "energy": 100
-    },
-    "herta": {
-      "path": "erudition",
-      "type": "ice",
-      "hpMax": 130,
-      "atk": 79.2,
-      "def": 54,
-      "spd": 100,
-      "energy": 110
-    },
-    "himeko": {
-      "path": "erudition",
-      "type": "fire",
-      "hpMax": 143,
-      "atk": 102.96,
-      "def": 59.4,
-      "spd": 96,
-      "energy": 120
-    },
-    "hook": {
-      "path": "destruction",
-      "type": "fire",
-      "hpMax": 182,
-      "atk": 84,
-      "def": 48,
-      "spd": 94,
-      "energy": 120
-    },
-    "jingyuan": {
-      "path": "erudition",
-      "type": "lightning",
-      "hpMax": 158,
-      "atk": 95.04,
-      "def": 66,
-      "spd": 99,
-      "energy": 130
-    },
-    "kafka": {
-      "path": "nihility",
-      "type": "lightning",
-      "hpMax": 148,
-      "atk": 92.4,
-      "def": 66,
-      "spd": 100,
-      "energy": 120
-    },
-    "luka": {
-      "path": "nihility",
-      "type": "physical",
-      "hpMax": 125,
-      "atk": 79.2,
-      "def": 66,
-      "spd": 103,
-      "energy": 130
-    },
-    "luocha": {
-      "path": "abundance",
-      "type": "imaginary",
-      "hpMax": 174,
-      "atk": 102.96,
-      "def": 49.5,
-      "spd": 101,
-      "energy": 100
-    },
-    "lynx": {
-      "path": "abundance",
-      "type": "quantum",
-      "hpMax": 144,
-      "atk": 67.2,
-      "def": 75,
-      "spd": 100,
-      "energy": 100
-    },
-    "march7th": {
-      "path": "preservation",
-      "type": "ice",
-      "hpMax": 144,
+      "hp": 144,
       "atk": 69.6,
       "def": 78,
       "spd": 101,
       "energy": 120
     },
-    "natasha": {
-      "path": "abundance",
-      "type": "physical",
-      "hpMax": 158,
-      "atk": 64.8,
-      "def": 69,
-      "spd": 98,
-      "energy": 90
-    },
-    "pela": {
-      "path": "nihility",
-      "type": "ice",
-      "hpMax": 134,
-      "atk": 74.4,
-      "def": 63,
-      "spd": 105,
-      "energy": 110
-    },
-    "qingque": {
-      "path": "erudition",
-      "type": "quantum",
-      "hpMax": 139,
-      "atk": 88.8,
-      "def": 60,
-      "spd": 98,
-      "energy": 140
-    },
-    "sampo": {
-      "path": "nihility",
-      "type": "wind",
-      "hpMax": 139,
-      "atk": 84,
-      "def": 54,
-      "spd": 102,
-      "energy": 120
-    },
-    "seele": {
+    "0001": {
+      "name": {
+        "zh-TW": "丹恆"
+      },
+      "rarity": 4,
       "path": "hunt",
-      "type": "quantum",
-      "hpMax": 127,
-      "atk": 87.12,
-      "def": 49.5,
-      "spd": 115,
-      "energy": 120
-    },
-    "serval": {
-      "path": "erudition",
-      "type": "lightning",
-      "hpMax": 125,
-      "atk": 88.8,
-      "def": 51,
-      "spd": 104,
+      "type": "wind",
+      "hp": 120,
+      "atk": 74.4,
+      "def": 54,
+      "spd": 110,
       "energy": 100
     },
-    "silverWolf": {
-      "path": "nihility",
-      "type": "quantum",
-      "hpMax": 143,
-      "atk": 87.12,
-      "def": 62.7,
-      "spd": 107,
-      "energy": 110
-    },
-    "sushang": {
-      "path": "hunt",
-      "type": "physical",
-      "hpMax": 125,
-      "atk": 76.8,
-      "def": 57,
-      "spd": 107,
-      "energy": 120
-    },
-    "tingyun": {
-      "path": "harmony",
-      "type": "lightning",
-      "hpMax": 115,
-      "atk": 72,
-      "def": 54,
-      "spd": 112,
-      "energy": 130
-    },
-    "trailblazerDestruction": {
-      "path": "destruction",
-      "type": "physical",
-      "hpMax": 164,
-      "atk": 84.48,
-      "def": 62.7,
-      "spd": 100,
-      "energy": 120
-    },
-    "trailblazerPreservation": {
-      "path": "preservation",
+    "0002": {
+      "name": {
+        "zh-TW": "姬子"
+      },
+      "rarity": 5,
+      "path": "erudition",
       "type": "fire",
-      "hpMax": 169,
-      "atk": 81.84,
-      "def": 82.5,
-      "spd": 95,
+      "hp": 143,
+      "atk": 102.96,
+      "def": 59.4,
+      "spd": 96,
       "energy": 120
     },
-    "welt": {
+    "0003": {
+      "name": {
+        "zh-TW": "瓦爾特"
+      },
+      "rarity": 5,
       "path": "nihility",
       "type": "imaginary",
-      "hpMax": 153,
+      "hp": 153,
       "atk": 84.48,
       "def": 69.3,
       "spd": 102,
       "energy": 120
     },
-    "yanqing": {
+    "0004": {
+      "name": {
+        "zh-TW": "卡芙卡"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "type": "lightning",
+      "hp": 148,
+      "atk": 92.4,
+      "def": 66,
+      "spd": 100,
+      "energy": 120
+    },
+    "0005": {
+      "name": {
+        "zh-TW": "銀狼"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "type": "quantum",
+      "hp": 143,
+      "atk": 87.12,
+      "def": 62.7,
+      "spd": 107,
+      "energy": 110
+    },
+    "0007": {
+      "name": {
+        "zh-TW": "阿蘭"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "type": "lightning",
+      "hp": 163.2,
+      "atk": 81.6,
+      "def": 45,
+      "spd": 102,
+      "energy": 110
+    },
+    "0008": {
+      "name": {
+        "zh-TW": "艾絲妲"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "type": "fire",
+      "hp": 139,
+      "atk": 69.6,
+      "def": 63,
+      "spd": 106,
+      "energy": 120
+    },
+    "0012": {
+      "name": {
+        "zh-TW": "黑塔"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "type": "ice",
+      "hp": 130,
+      "atk": 79.2,
+      "def": 54,
+      "spd": 100,
+      "energy": 110
+    },
+    "0100": {
+      "name": {
+        "zh-TW": "布洛妮婭"
+      },
+      "rarity": 5,
+      "path": "harmony",
+      "type": "wind",
+      "hp": 169,
+      "atk": 79.2,
+      "def": 72.6,
+      "spd": 99,
+      "energy": 120
+    },
+    "0101": {
+      "name": {
+        "zh-TW": "希兒"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "type": "quantum",
+      "hp": 127,
+      "atk": 87.12,
+      "def": 49.5,
+      "spd": 115,
+      "energy": 120
+    },
+    "0102": {
+      "name": {
+        "zh-TW": "希露瓦"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "type": "lightning",
+      "hp": 125,
+      "atk": 88.8,
+      "def": 51,
+      "spd": 104,
+      "energy": 100
+    },
+    "0103": {
+      "name": {
+        "zh-TW": "傑帕德"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "type": "ice",
+      "hp": 190,
+      "atk": "73.92",
+      "def": 89.1,
+      "spd": 92,
+      "energy": 100
+    },
+    "0104": {
+      "name": {
+        "zh-TW": "娜塔莎"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "type": "physical",
+      "hp": 158,
+      "atk": 64.8,
+      "def": 69,
+      "spd": 98,
+      "energy": 90
+    },
+    "0105": {
+      "name": {
+        "zh-TW": "佩拉"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "type": "ice",
+      "hp": 134,
+      "atk": 74.4,
+      "def": 63,
+      "spd": 105,
+      "energy": 110
+    },
+    "0106": {
+      "name": {
+        "zh-TW": "克拉拉"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "type": "physical",
+      "hp": 169,
+      "atk": 100.32,
+      "def": 66,
+      "spd": 90,
+      "energy": 110
+    },
+    "0107": {
+      "name": {
+        "zh-TW": "桑博"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "type": "wind",
+      "hp": 139,
+      "atk": 84,
+      "def": 54,
+      "spd": 102,
+      "energy": 120
+    },
+    "0108": {
+      "name": {
+        "zh-TW": "虎克"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "type": "fire",
+      "hp": 182,
+      "atk": 84,
+      "def": 48,
+      "spd": 94,
+      "energy": 120
+    },
+    "0109": {
+      "name": {
+        "zh-TW": "玲可"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "type": "quantum",
+      "hp": 144,
+      "atk": 67.2,
+      "def": 75,
+      "spd": 100,
+      "energy": 100
+    },
+    "0110": {
+      "name": {
+        "zh-TW": "盧卡"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "type": "physical",
+      "hp": 125,
+      "atk": 79.2,
+      "def": 66,
+      "spd": 103,
+      "energy": 130
+    },
+    "0200": {
+      "name": {
+        "zh-TW": "青雀"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "type": "quantum",
+      "hp": 139,
+      "atk": 88.8,
+      "def": 60,
+      "spd": 98,
+      "energy": 140
+    },
+    "0201": {
+      "name": {
+        "zh-TW": "停雲"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "type": "lightning",
+      "hp": 115,
+      "atk": 72,
+      "def": 54,
+      "spd": 112,
+      "energy": 130
+    },
+    "0202": {
+      "name": {
+        "zh-TW": "羅剎"
+      },
+      "rarity": 5,
+      "path": "abundance",
+      "type": "imaginary",
+      "hp": 174,
+      "atk": 102.96,
+      "def": 49.5,
+      "spd": 101,
+      "energy": 100
+    },
+    "0203": {
+      "name": {
+        "zh-TW": "景元"
+      },
+      "rarity": 5,
+      "path": "erudition",
+      "type": "lightning",
+      "hp": 158,
+      "atk": 95.04,
+      "def": 66,
+      "spd": 99,
+      "energy": 130
+    },
+    "0204": {
+      "name": {
+        "zh-TW": "刃"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "type": "wind",
+      "hp": 185,
+      "atk": 73.92,
+      "def": 66,
+      "spd": 97,
+      "energy": 130
+    },
+    "0205": {
+      "name": {
+        "zh-TW": "素裳"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "type": "physical",
+      "hp": 125,
+      "atk": 76.8,
+      "def": 57,
+      "spd": 107,
+      "energy": 120
+    },
+    "0206": {
+      "name": {
+        "zh-TW": "馭空"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "type": "imaginary",
+      "hp": 125,
+      "atk": 81.6,
+      "def": 51,
+      "spd": 107,
+      "energy": 130
+    },
+    "0207": {
+      "name": {
+        "zh-TW": "符玄"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "type": "quantum",
+      "hp": 201,
+      "atk": 63.36,
+      "def": 82.5,
+      "spd": 100,
+      "energy": 135
+    },
+    "0208": {
+      "name": {
+        "zh-TW": "彥卿"
+      },
+      "rarity": 5,
       "path": "hunt",
       "type": "ice",
-      "hpMax": 121,
+      "hp": 121,
       "atk": 92.4,
       "def": 56.1,
       "spd": 109,
       "energy": 140
     },
-    "yinyue": {
+    "0210": {
+      "name": {
+        "zh-TW": "白露"
+      },
+      "rarity": 5,
+      "path": "abundance",
+      "type": "lightning",
+      "hp": 180,
+      "atk": 76.56,
+      "def": 66,
+      "spd": 98,
+      "energy": 100
+    },
+    "0212": {
+      "name": {
+        "zh-TW": "丹恆•飲月"
+      },
+      "rarity": 5,
       "path": "destruction",
       "type": "imaginary",
-      "hpMax": 169,
+      "hp": 169,
       "atk": 95.04,
       "def": 49.5,
       "spd": 102,
       "energy": 140
     },
-    "yukong": {
+    "7000": {
+      "name": {
+        "zh-TW": "開拓者•毀滅"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "type": "physical",
+      "hp": 164,
+      "atk": 84.48,
+      "def": 62.7,
+      "spd": 100,
+      "energy": 120
+    },
+    "7001": {
+      "name": {
+        "zh-TW": "開拓者•存護"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "type": "fire",
+      "hp": 169,
+      "atk": 81.84,
+      "def": 82.5,
+      "spd": 95,
+      "energy": 120
+    }
+  },
+  "lightCones": {
+    "0000": {
+      "name": {
+        "zh-TW": "鋒鏑"
+      },
+      "rarity": 3,
+      "path": "hunt",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0001": {
+      "name": {
+        "zh-TW": "物穰"
+      },
+      "rarity": 3,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 12,
+      "def": 12
+    },
+    "0002": {
+      "name": {
+        "zh-TW": "天傾"
+      },
+      "rarity": 3,
+      "path": "destruction",
+      "hp": 38,
+      "atk": 16.8,
+      "def": 9
+    },
+    "0003": {
+      "name": {
+        "zh-TW": "琥珀"
+      },
+      "rarity": 3,
+      "path": "preservation",
+      "hp": 38,
+      "atk": 12,
+      "def": 15
+    },
+    "0004": {
+      "name": {
+        "zh-TW": "幽邃"
+      },
+      "rarity": 3,
+      "path": "nihility",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0005": {
+      "name": {
+        "zh-TW": "齊頌"
+      },
+      "rarity": 3,
       "path": "harmony",
-      "type": "imaginary",
-      "hpMax": 125,
-      "atk": 81.6,
-      "def": 51,
-      "spd": 107,
-      "energy": 130
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0006": {
+      "name": {
+        "zh-TW": "智庫"
+      },
+      "rarity": 3,
+      "path": "erudition",
+      "hp": 34,
+      "atk": 16.8,
+      "def": 12
+    },
+    "0007": {
+      "name": {
+        "zh-TW": "離弦"
+      },
+      "rarity": 3,
+      "path": "hunt",
+      "hp": 34,
+      "atk": 16.8,
+      "def": 12
+    },
+    "0008": {
+      "name": {
+        "zh-TW": "嘉果"
+      },
+      "rarity": 3,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 14.4,
+      "def": 9
+    },
+    "0009": {
+      "name": {
+        "zh-TW": "樂圮"
+      },
+      "rarity": 3,
+      "path": "destruction",
+      "hp": 38,
+      "atk": 16.8,
+      "def": 9
+    },
+    "0010": {
+      "name": {
+        "zh-TW": "戍禦"
+      },
+      "rarity": 3,
+      "path": "preservation",
+      "hp": 43,
+      "atk": 12,
+      "def": 12
+    },
+    "0011": {
+      "name": {
+        "zh-TW": "淵環"
+      },
+      "rarity": 3,
+      "path": "nihility",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0012": {
+      "name": {
+        "zh-TW": "輪契"
+      },
+      "rarity": 3,
+      "path": "harmony",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0013": {
+      "name": {
+        "zh-TW": "靈鑰"
+      },
+      "rarity": 3,
+      "path": "erudition",
+      "hp": 34,
+      "atk": 16.8,
+      "def": 12
+    },
+    "0014": {
+      "name": {
+        "zh-TW": "相抗"
+      },
+      "rarity": 3,
+      "path": "hunt",
+      "hp": 34,
+      "atk": 16.8,
+      "def": 12
+    },
+    "0015": {
+      "name": {
+        "zh-TW": "蕃息"
+      },
+      "rarity": 3,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 14.4,
+      "def": 9
+    },
+    "0016": {
+      "name": {
+        "zh-TW": "俱歿"
+      },
+      "rarity": 3,
+      "path": "destruction",
+      "hp": 38,
+      "atk": 16.8,
+      "def": 9
+    },
+    "0017": {
+      "name": {
+        "zh-TW": "開疆"
+      },
+      "rarity": 3,
+      "path": "preservation",
+      "hp": 43,
+      "atk": 12,
+      "def": 12
+    },
+    "0018": {
+      "name": {
+        "zh-TW": "匿影"
+      },
+      "rarity": 3,
+      "path": "nihility",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0019": {
+      "name": {
+        "zh-TW": "調和"
+      },
+      "rarity": 3,
+      "path": "harmony",
+      "hp": 38,
+      "atk": 14.4,
+      "def": 12
+    },
+    "0020": {
+      "name": {
+        "zh-TW": "睿見"
+      },
+      "rarity": 3,
+      "path": "erudition",
+      "hp": 34,
+      "atk": 16.8,
+      "def": 12
+    },
+    "1000": {
+      "name": {
+        "zh-TW": "一場術後對話"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "hp": 48,
+      "atk": 19.2,
+      "def": 15
+    },
+    "1001": {
+      "name": {
+        "zh-TW": "晚安與睡顏"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1002": {
+      "name": {
+        "zh-TW": "餘生的第一天"
+      },
+      "rarity": 4,
+      "path": "preservation",
+      "hp": 43,
+      "atk": 16.8,
+      "def": 21
+    },
+    "1003": {
+      "name": {
+        "zh-TW": "唯有沉默"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1004": {
+      "name": {
+        "zh-TW": "記憶中的模樣"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1005": {
+      "name": {
+        "zh-TW": "鼴鼠黨歡迎你"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "hp": 48,
+      "atk": 21.6,
+      "def": 12
+    },
+    "1006": {
+      "name": {
+        "zh-TW": "「我」的誕生"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1007": {
+      "name": {
+        "zh-TW": "同一種心情"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1008": {
+      "name": {
+        "zh-TW": "獵物的視線"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1009": {
+      "name": {
+        "zh-TW": "朗道的選擇"
+      },
+      "rarity": 4,
+      "path": "preservation",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1010": {
+      "name": {
+        "zh-TW": "論劍"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1011": {
+      "name": {
+        "zh-TW": "與行星相會"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "hp": 48,
+      "atk": 19.2,
+      "def": 15
+    },
+    "1012": {
+      "name": {
+        "zh-TW": "秘密誓心"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "hp": 48,
+      "atk": 21.6,
+      "def": 12
+    },
+    "1013": {
+      "name": {
+        "zh-TW": "別讓世界靜下來"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "hp": 38,
+      "atk": 21.6,
+      "def": 18
+    },
+    "1014": {
+      "name": {
+        "zh-TW": "此時恰好"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1015": {
+      "name": {
+        "zh-TW": "決心如汗珠般閃耀"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1016": {
+      "name": {
+        "zh-TW": "宇宙市場趨勢"
+      },
+      "rarity": 4,
+      "path": "preservation",
+      "hp": 48,
+      "atk": 16.8,
+      "def": 18
+    },
+    "1017": {
+      "name": {
+        "zh-TW": "按個追蹤吧！"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1018": {
+      "name": {
+        "zh-TW": "舞！舞！舞！"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1019": {
+      "name": {
+        "zh-TW": "在藍天下"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1020": {
+      "name": {
+        "zh-TW": "天才們的休憩"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "hp": 38,
+      "atk": 21.6,
+      "def": 18
+    },
+    "1021": {
+      "name": {
+        "zh-TW": "等價交換"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1022": {
+      "name": {
+        "zh-TW": "延長記號"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1023": {
+      "name": {
+        "zh-TW": "我們是地火"
+      },
+      "rarity": 4,
+      "path": "preservation",
+      "hp": 34,
+      "atk": 21.6,
+      "def": 21
+    },
+    "1024": {
+      "name": {
+        "zh-TW": "春水初生"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "hp": 38,
+      "atk": 21.6,
+      "def": 18
+    },
+    "1025": {
+      "name": {
+        "zh-TW": "過往未來"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "hp": 43,
+      "atk": 19.2,
+      "def": 18
+    },
+    "1026": {
+      "name": {
+        "zh-TW": "汪！散步時間！"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1027": {
+      "name": {
+        "zh-TW": "早餐的儀式感"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "hp": 38,
+      "atk": 21.6,
+      "def": 18
+    },
+    "1028": {
+      "name": {
+        "zh-TW": "暖夜不會漫長"
+      },
+      "rarity": 4,
+      "path": "abundance",
+      "hp": 48,
+      "atk": 16.8,
+      "def": 18
+    },
+    "1029": {
+      "name": {
+        "zh-TW": "後會有期"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 38,
+      "atk": 24,
+      "def": 15
+    },
+    "1030": {
+      "name": {
+        "zh-TW": "這就是我啦！"
+      },
+      "rarity": 4,
+      "path": "preservation",
+      "hp": 38,
+      "atk": 16.8,
+      "def": 24
+    },
+    "1031": {
+      "name": {
+        "zh-TW": "重返幽冥"
+      },
+      "rarity": 4,
+      "path": "hunt",
+      "hp": 38,
+      "atk": 24,
+      "def": 15
+    },
+    "1032": {
+      "name": {
+        "zh-TW": "鏤月裁雲之意"
+      },
+      "rarity": 4,
+      "path": "harmony",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "1033": {
+      "name": {
+        "zh-TW": "無處可逃"
+      },
+      "rarity": 4,
+      "path": "destruction",
+      "hp": 43,
+      "atk": 24,
+      "def": 12
+    },
+    "1034": {
+      "name": {
+        "zh-TW": "今日亦是和平的一日"
+      },
+      "rarity": 4,
+      "path": "erudition",
+      "hp": 38,
+      "atk": 24,
+      "def": 15
+    },
+    "2000": {
+      "name": {
+        "zh-TW": "新手任務開始前"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "hp": 43,
+      "atk": 21.6,
+      "def": 15
+    },
+    "3000": {
+      "name": {
+        "zh-TW": "銀河鐵道之夜"
+      },
+      "rarity": 5,
+      "path": "erudition",
+      "hp": 53,
+      "atk": 26.4,
+      "def": 18
+    },
+    "3001": {
+      "name": {
+        "zh-TW": "於夜色中"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3002": {
+      "name": {
+        "zh-TW": "無可取代的東西"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "hp": 53,
+      "atk": 26.4,
+      "def": 18
+    },
+    "3003": {
+      "name": {
+        "zh-TW": "但戰鬥還未結束"
+      },
+      "rarity": 5,
+      "path": "harmony",
+      "hp": 53,
+      "atk": 24,
+      "def": 21
+    },
+    "3004": {
+      "name": {
+        "zh-TW": "以世界之名"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3005": {
+      "name": {
+        "zh-TW": "制勝的瞬間"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "hp": 48,
+      "atk": 21.6,
+      "def": 27
+    },
+    "3006": {
+      "name": {
+        "zh-TW": "只需等待"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3007": {
+      "name": {
+        "zh-TW": "雨一直下"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3008": {
+      "name": {
+        "zh-TW": "棺的迴響"
+      },
+      "rarity": 5,
+      "path": "abundance",
+      "hp": 53,
+      "atk": 26.4,
+      "def": 18
+    },
+    "3009": {
+      "name": {
+        "zh-TW": "到不了的彼岸"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "hp": 58,
+      "atk": 26.4,
+      "def": 15
+    },
+    "3010": {
+      "name": {
+        "zh-TW": "拂曉之前"
+      },
+      "rarity": 5,
+      "path": "erudition",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3011": {
+      "name": {
+        "zh-TW": "她已閉上雙眼"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "hp": 58,
+      "atk": 19.2,
+      "def": 24
+    },
+    "3012": {
+      "name": {
+        "zh-TW": "如泥酣眠"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "3013": {
+      "name": {
+        "zh-TW": "時節不居"
+      },
+      "rarity": 5,
+      "path": "abundance",
+      "hp": 58,
+      "atk": 21.6,
+      "def": 21
+    },
+    "3014": {
+      "name": {
+        "zh-TW": "此身為劍"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "hp": 53,
+      "atk": 26.4,
+      "def": 18
+    },
+    "3015": {
+      "name": {
+        "zh-TW": "比陽光更明亮的"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "hp": 48,
+      "atk": 28.8,
+      "def": 18
+    },
+    "3016": {
+      "name": {
+        "zh-TW": "煩惱著，幸福著"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "hp": 48,
+      "atk": 26.4,
+      "def": 21
+    },
+    "4000": {
+      "name": {
+        "zh-TW": "記一位星神的殞落"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "hp": 48,
+      "atk": 24,
+      "def": 18
+    },
+    "4001": {
+      "name": {
+        "zh-TW": "星海巡航"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "hp": 43,
+      "atk": 24,
+      "def": 21
+    },
+    "4002": {
+      "name": {
+        "zh-TW": "記憶的質料"
+      },
+      "rarity": 5,
+      "path": "preservation",
+      "hp": 48,
+      "atk": 19.2,
+      "def": 24
+    },
+    "4003": {
+      "name": {
+        "zh-TW": "孤獨的療癒"
+      },
+      "rarity": 5,
+      "path": "nihility",
+      "hp": 48,
+      "atk": 24,
+      "def": 18
     }
   },
   "breakBase": [
@@ -307,5 +1221,13 @@
      871.06,  964.87, 1056.42, 1145.79, 1233.06, 1318.30, 1401.58, 1482.96, 1562.52, 1640.31,
     1752.32, 1861.90, 1969.12, 2074.07, 2176.80, 2277.39, 2375.91, 2472.42, 2566.97, 2659.64,
     2780.30, 2898.60, 3014.60, 3128.37, 3239.98, 3349.47, 3456.92, 3562.38, 3665.91, 3767.55
-  ]
+  ],
+  "stats": {
+    "hp": "生命值",
+    "atk": "攻擊力",
+    "def": "防禦力",
+    "spd": "速度",
+    "critRate": "暴擊率",
+    "critDmg": "暴擊傷害"
+  }
 }

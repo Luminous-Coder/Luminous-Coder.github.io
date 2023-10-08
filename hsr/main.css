@@ -17,11 +17,13 @@
 }
 .dropdown-menu {
   position: absolute;
+  z-index: 1;
   top: 100%;
   left: 8px;
   overflow-y: scroll;
   width: calc(100% - 16px);
-  height: 50vh;
+  height: fit-content;
+  max-height: 50vh;
   list-style: none;
   border: 1px solid #696969;
   border-radius: 4px;
@@ -50,7 +52,7 @@ footer {
   margin: 0 auto;
 }
 
-.character-dropdown > .button {
+.block {
   display: block;
 }
 
