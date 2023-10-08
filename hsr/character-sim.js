@@ -71,7 +71,7 @@
         });
         menu.appendChild(item);
       });
-    }
+    };
     result.setItems(items);
     result.appendChild(menu);
 
