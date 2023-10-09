@@ -155,7 +155,7 @@
         panelValue.textContent = (characterValue + lightConeValue).toFixed(2);
       });
       broker.subscribe('lightCone', (id) => {
-        lightConeValue = getLightCone(id, 80)[statName];
+        lightConeValue = getLightCone(id, 80)[statName] ?? 0;
         panelValue.textContent = (characterValue + lightConeValue).toFixed(2);
       });
       item.appendChild(panelValue);
