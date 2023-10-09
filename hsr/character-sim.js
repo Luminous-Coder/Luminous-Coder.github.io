@@ -33,16 +33,6 @@
     return result;
   }
 
-  function addStats(...factors) {
-    return factors.reduce((sum, value) => {
-      for (const key in value) {
-        if (!sum[key]) sum[key] = 0;
-        sum[key] += value[key];
-      }
-      return sum;
-    });
-  }
-
   function Button() {
     let result = document.createElement('span');
     result.classList.add('button');
@@ -87,9 +77,6 @@
     };
     render();
 
-    result.setSelection = function (value) {
-      result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: value}}));
-    };
     Object.defineProperty(result, 'button', {
       get() {
         return btn;
@@ -99,64 +86,57 @@
   }
 
   const app = document.getElementById('app');
-  let renderers = [];
-  let state = new Proxy(
-    {
-      character: '',
-      characterResult: null,
-      lightCone: '',
-      lightConeResult: null,
-      result: null,
+  const broker = {
+    subscribers: {},
+    subscribe(event, callback) {
+      if (!this.subscribers[event]) this.subscribers[event] = [];
+      this.subscribers[event].push(callback);
     },
-    {
-      set(state, key, newValue) {
-        state[key] = newValue;
-        renderers.forEach((f) => f());
-        return true;
-      },
+    publish(event, data) {
+      if (!this.subscribers[event]) this.subscribers[event] = [];
+      this.subscribers[event].forEach(callback => callback(data));
     },
-  );
-  let lightConeDropdown = Dropdown([]);
-  lightConeDropdown.button.classList.add('block');
-  lightConeDropdown.addEventListener('lmn-select', (event) => {
-    state.lightCone = event.detail.selection;
-    state.lightConeResult = getLightCone(state.lightCone, 80);
-    state.result = addStats(state.characterResult, state.lightConeResult);
-    lightConeDropdown.button.textContent = data.lightCones[state.lightCone].name[lang];
-  });
+  };
+
   { // Character dropdown subcomponent.
-    let characterDropdownItems = [];
+    let items = [];
     for (const id in data.characters) {
       let item = document.createElement('li');
       item.dataset.value = id;
       item.textContent = data.characters[id].name[lang];
-      characterDropdownItems.push(item);
+      items.push(item);
     }
-    let characterDropdown = Dropdown(characterDropdownItems);
-    characterDropdown.button.classList.add('block');
-    characterDropdown.addEventListener('lmn-select', (event) => {
-      state.character = event.detail.selection;
-      state.characterResult = getCharacter(state.character, 80);
-      state.result = addStats(state.characterResult, state.lightConeResult);
-      characterDropdown.button.textContent = data.characters[state.character].name[lang];
-
-      let items = [];
-      let availableLightConeIds = Object.entries(data.lightCones)
-        .filter(([k, v]) => v.path === data.characters[state.character].path)
-        .map(([k, v]) => k);
-      for (const id of availableLightConeIds) {
-        let item = document.createElement('li');
-        item.dataset.value = id;
-        item.textContent = data.lightCones[id].name[lang];
-        items.push(item);
-      }
-      lightConeDropdown.setItems(items);
-      lightConeDropdown.setSelection(availableLightConeIds[0]);
+    let dropdown = Dropdown(items);
+    dropdown.button.classList.add('block');
+    broker.subscribe('character', (id) => dropdown.button.textContent = data.characters[id].name[lang]);
+    dropdown.addEventListener('lmn-select', (event) => {
+      broker.publish('character', event.detail.selection);
     });
-    characterDropdown.setSelection('0000');
-    app.appendChild(characterDropdown);
+    app.appendChild(dropdown);
   }
-  app.appendChild(lightConeDropdown);
+  { // Light cone dropdown subcomponent.
+    let dropdown = Dropdown([]);
+    broker.subscribe('character', (character) => {
+      let items = [];
+      for (const id in data.lightCones) {
+        let lightCone = data.lightCones[id];
+        if (lightCone.path === data.characters[character].path) {
+          let item = document.createElement('li');
+          item.dataset.value = id;
+          item.textContent = lightCone.name[lang];
+          items.push(item);
+        }
+      }
+      dropdown.setItems(items);
+      broker.publish('lightCone', items[0].dataset.value);
+    });
+    dropdown.button.classList.add('block');
+    broker.subscribe('lightCone', (id) => dropdown.button.textContent = data.lightCones[id].name[lang]);
+    dropdown.addEventListener('lmn-select', (event) => {
+      broker.publish('lightCone', event.detail.selection);
+    });
+    app.appendChild(dropdown);
+  }
   { // Character panel subcomponent.
     let panel = document.createElement('ul');
     panel.classList.add('panel');
@@ -168,12 +148,20 @@
       item.appendChild(panelName);
       let panelValue = document.createElement('span');
       panelValue.classList.add('panel-value');
-      renderers.push(() => panelValue.textContent = state.result[statName].toFixed(2));
+      let characterValue = 0;
+      let lightConeValue = 0;
+      broker.subscribe('character', (id) => {
+        characterValue = getCharacter(id, 80)[statName];
+        panelValue.textContent = (characterValue + lightConeValue).toFixed(2);
+      });
+      broker.subscribe('lightCone', (id) => {
+        lightConeValue = getLightCone(id, 80)[statName];
+        panelValue.textContent = (characterValue + lightConeValue).toFixed(2);
+      });
       item.appendChild(panelValue);
       panel.appendChild(item);
     }
     app.appendChild(panel);
   }
-
-  renderers.forEach((f) => f());
+  broker.publish('character', '0000');
 })();
