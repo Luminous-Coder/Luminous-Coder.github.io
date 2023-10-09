@@ -431,6 +431,16 @@
     }
   },
   "lightCones": {
+    "": {
+      "name": {
+        "zh-TW": "\u00A0"
+      },
+      "rarity": 0,
+      "path": "",
+      "hp": 0,
+      "atk": 0,
+      "def": 0
+    },
     "0000": {
       "name": {
         "zh-TW": "鋒鏑"

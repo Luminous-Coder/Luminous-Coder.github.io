@@ -128,7 +128,7 @@
         }
       }
       dropdown.setItems(items);
-      broker.publish('lightCone', items[0].dataset.value);
+      broker.publish('lightCone', '');
     });
     dropdown.button.classList.add('block');
     broker.subscribe('lightCone', (id) => dropdown.button.textContent = data.lightCones[id].name[lang]);
