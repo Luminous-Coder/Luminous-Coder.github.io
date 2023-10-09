@@ -100,7 +100,7 @@
 
   { // Character dropdown subcomponent.
     let items = [];
-    for (const id in data.characters) {
+    for (const id of Object.keys(data.characters).sort()) {
       let item = document.createElement('li');
       item.dataset.value = id;
       item.textContent = data.characters[id].name[lang];
@@ -118,7 +118,7 @@
     let dropdown = Dropdown([]);
     broker.subscribe('character', (character) => {
       let items = [];
-      for (const id in data.lightCones) {
+      for (const id of Object.keys(data.lightCones).sort()) {
         let lightCone = data.lightCones[id];
         if (lightCone.path === data.characters[character].path) {
           let item = document.createElement('li');
