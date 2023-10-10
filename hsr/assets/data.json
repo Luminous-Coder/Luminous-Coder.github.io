@@ -260,6 +260,19 @@
       "spd": 103,
       "energy": 130
     },
+    "0111": {
+      "name": {
+        "zh-TW": "托帕&帳帳"
+      },
+      "rarity": 5,
+      "path": "hunt",
+      "type": "fire",
+      "hp": 127,
+      "atk": 84.48,
+      "def": 56.1,
+      "spd": 110,
+      "energy": 130
+    },
     "0200": {
       "name": {
         "zh-TW": "青雀"
@@ -377,6 +390,19 @@
       "spd": 109,
       "energy": 140
     },
+    "0209": {
+      "name": {
+        "zh-TW": "桂乃芬"
+      },
+      "rarity": 4,
+      "path": "nihility",
+      "type": "fire",
+      "hp": 120,
+      "atk": 79.2,
+      "def": 60,
+      "spd": 106,
+      "energy": 120
+    },
     "0210": {
       "name": {
         "zh-TW": "白露"
@@ -389,6 +415,19 @@
       "def": 66,
       "spd": 98,
       "energy": 100
+    },
+    "0211": {
+      "name": {
+        "zh-TW": "鏡流"
+      },
+      "rarity": 5,
+      "path": "destruction",
+      "type": "ice",
+      "hp": 195,
+      "atk": 92.4,
+      "def": 66,
+      "spd": 96,
+      "energy": 140
     },
     "0212": {
       "name": {
@@ -1239,5 +1278,35 @@
     "spd": "速度",
     "critRate": "暴擊率",
     "critDmg": "暴擊傷害"
+  },
+  "types": {
+    "physical": {
+      "color": "#FFFFFF",
+      "zh-TW": "物理"
+    },
+    "fire": {
+      "color": "#F84F36",
+      "zh-TW": "火"
+    },
+    "ice": {
+      "color": "#47C7FD",
+      "zh-TW": "冰"
+    },
+    "lightning": {
+      "color": "#8872F1",
+      "zh-TW": "雷"
+    },
+    "wind": {
+      "color": "#00FF9C",
+      "zh-TW": "風"
+    },
+    "quantum": {
+      "color": "#1C29BA",
+      "zh-TW": "量子"
+    },
+    "imaginary": {
+      "color": "#F4D258",
+      "zh-TW": "虛數"
+    }
   }
 }

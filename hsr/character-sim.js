@@ -1,5 +1,5 @@
 (async () => {
-  const data = await (await fetch('data.json')).json();
+  const data = await (await fetch('./assets/data.json')).json();
 
   let lang = 'zh-TW';
 
@@ -35,7 +35,7 @@
 
   function Button() {
     let result = document.createElement('span');
-    result.classList.add('button');
+    result.classList.add('btn');
     return result;
   }
 
@@ -85,6 +85,39 @@
     return result;
   }
 
+  function createModal(title, ...contents) {
+    let result = document.createElement('div');
+    result.classList.add('modal-container');
+    result.hidden = true;
+    result.addEventListener('click', (event) => {
+      if (!event.target.closest('.modal'))
+        result.hidden = true;
+    });
+
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    let modalHeader = document.createElement('div');
+    modalHeader.classList.add('modal-header');
+    let modalTitle = document.createElement('h1');
+    modalTitle.append(title);
+    let close = document.createElement('span');
+    close.classList.add('btn');
+    close.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    close.addEventListener('click', () => {
+      result.hidden = true;
+    });
+    modal.appendChild(modalHeader).append(modalTitle, close);
+
+    let modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+    modal.appendChild(modalContent).append(...contents);
+
+    result.appendChild(modal);
+    document.body.appendChild(result);
+    return result;
+  }
+
   const app = document.getElementById('app');
   const broker = {
     subscribers: {},
@@ -97,22 +130,31 @@
       this.subscribers[event].forEach(callback => callback(data));
     },
   };
-
   { // Character dropdown subcomponent.
-    let items = [];
+    let list = document.createElement('ul');
+    list.classList.add('grid-list');
     for (const id of Object.keys(data.characters).sort()) {
       let item = document.createElement('li');
-      item.dataset.value = id;
-      item.textContent = data.characters[id].name[lang];
-      items.push(item);
+      item.classList.add('btn', 'avatar');
+      item.style.setProperty('--avatar-border-color', data.types[data.characters[id].type].color);
+      item.addEventListener('click', () => {
+        broker.publish('character', id);
+        modal.hidden = true;
+      });
+      let img = document.createElement('img');
+      img.src = `./assets/avatars/${id}.png`;
+      let name = document.createElement('span');
+      name.textContent = data.characters[id].name[lang];
+      list.appendChild(item).append(img, name);
     }
-    let dropdown = Dropdown(items);
-    dropdown.button.classList.add('block');
-    broker.subscribe('character', (id) => dropdown.button.textContent = data.characters[id].name[lang]);
-    dropdown.addEventListener('lmn-select', (event) => {
-      broker.publish('character', event.detail.selection);
+    let modal = createModal('Character', list);
+    let button = Button();
+    button.classList.add('block');
+    broker.subscribe('character', (id) => button.textContent = data.characters[id].name[lang]);
+    button.addEventListener('click', () => {
+      modal.hidden = false;
     });
-    app.appendChild(dropdown);
+    app.appendChild(button);
   }
   { // Light cone dropdown subcomponent.
     let dropdown = Dropdown([]);
