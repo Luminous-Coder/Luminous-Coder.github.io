@@ -1279,6 +1279,29 @@
     "critRate": "暴擊率",
     "critDmg": "暴擊傷害"
   },
+  "paths": {
+    "destruction": {
+      "zh-TW": "毀滅"
+    },
+    "hunt": {
+      "zh-TW": "巡獵"
+    },
+    "erudition": {
+      "zh-TW": "智識"
+    },
+    "harmony": {
+      "zh-TW": "同諧"
+    },
+    "nihility": {
+      "zh-TW": "虛無"
+    },
+    "preservation": {
+      "zh-TW": "存護"
+    },
+    "abundance": {
+      "zh-TW": "豐饒"
+    }
+  },
   "types": {
     "physical": {
       "color": "#FFFFFF",

@@ -130,24 +130,68 @@
       this.subscribers[event].forEach(callback => callback(data));
     },
   };
-  { // Character dropdown subcomponent.
+  { // Character modal subcomponent.
+    let listUpdaters = [];
+    let filterState = { paths: {}, types: {} };
+    let filter = document.createElement('ul');
+    filter.classList.add('filter');
+    for (const path in data.paths) {
+      let btn = document.createElement('li');
+      btn.classList.add('btn', 'avatar');
+      btn.addEventListener('click', () => {
+        filterState.paths[path] = !filterState.paths[path];
+        listUpdaters.forEach((f) => f());
+        btn.classList.toggle('active');
+      });
+      let img = document.createElement('img');
+      img.src = `./assets/paths/${path}.png`;
+      img.alt = data.paths[path][lang];
+      filter.appendChild(btn).append(img);
+      filterState.paths[path] = false;
+    }
+    for (const type in data.types) {
+      let btn = document.createElement('li');
+      btn.classList.add('btn', 'avatar');
+      btn.addEventListener('click', () => {
+        filterState.types[type] = !filterState.types[type];
+        listUpdaters.forEach((f) => f());
+        btn.classList.toggle('active');
+      });
+      let img = document.createElement('img');
+      img.src = `./assets/types/${type}.png`;
+      img.alt = data.types[type][lang];
+      filter.appendChild(btn).append(img);
+      filterState.types[type] = false;
+    }
+
     let list = document.createElement('ul');
     list.classList.add('grid-list');
     for (const id of Object.keys(data.characters).sort()) {
+      let character = data.characters[id];
       let item = document.createElement('li');
       item.classList.add('btn', 'avatar');
-      item.style.setProperty('--avatar-border-color', data.types[data.characters[id].type].color);
+      item.style.width = '80px';
+      item.style.setProperty('--avatar-border-color', data.types[character.type].color);
       item.addEventListener('click', () => {
         broker.publish('character', id);
         modal.hidden = true;
       });
+      listUpdaters.push(() => {
+        if ((filterState.paths[character.path] || Object.values(filterState.paths).every((x) => !x))
+          && (filterState.types[character.type] || Object.values(filterState.types).every((x) => !x))) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
       let img = document.createElement('img');
-      img.src = `./assets/avatars/${id}.png`;
+      img.src = `./assets/characters/${id}.png`;
       let name = document.createElement('span');
-      name.textContent = data.characters[id].name[lang];
+      name.textContent = character.name[lang];
       list.appendChild(item).append(img, name);
     }
-    let modal = createModal('Character', list);
+
+    let modal = createModal('Character', filter, list);
     let button = Button();
     button.classList.add('block');
     broker.subscribe('character', (id) => button.textContent = data.characters[id].name[lang]);

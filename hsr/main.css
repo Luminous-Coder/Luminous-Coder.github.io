@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .btn {
   cursor: pointer;
   user-select: none;
@@ -98,21 +102,33 @@ footer {
   border-radius: 4px;
 }
 
+.filter {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.filter .btn {
+  margin: 4px;
+  min-width: 0;
+}
+.filter .btn.active {
+  --avatar-border-color: #FFFFFF;
+}
+
 .avatar {
   display: flex;
   flex-flow: column nowrap;
   --avatar-border-color: #000000;
 }
 .avatar > img {
-  width: 80px;
-  height: 80px;
   border: 2px solid;
   border-color: var(--avatar-border-color);
   border-radius: 50%;
 }
 .avatar > span {
   overflow: hidden;
-  max-width: 80px;
+  max-width: 100%;
   margin: 0 auto;
   white-space: nowrap;
   text-overflow: fade;
