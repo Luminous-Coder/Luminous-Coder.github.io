@@ -8,7 +8,7 @@
   }
 
   function getCharacter(id, lvl) {
-    const {name, rarity, path, type, ...base} = data.characters[id];
+    const { name, rarity, path, type, ...base } = data.characters[id];
     let result = {
       lvl: Math.floor(lvl),
       critRate: 0.05,
@@ -22,8 +22,8 @@
   }
 
   function getLightCone(id, lvl) {
-    const {name, rarity, path, ...base} = data.lightCones[id];
-    let result = {lvl: Math.floor(lvl), ...base};
+    const { name, rarity, path, ...base } = data.lightCones[id];
+    let result = { lvl: Math.floor(lvl), ...base };
     for (const x of ['hp', 'atk', 'def']) {
       result[x] = base[x] * (1 + ((result.lvl - 1) * 0.15));
       let i = countAscension(lvl);
@@ -57,7 +57,7 @@
       menu.replaceChildren();
       items.forEach((item) => {
         item.addEventListener('click', () => {
-          result.dispatchEvent(new CustomEvent('lmn-select', {detail: {selection: item.dataset.value}}));
+          result.dispatchEvent(new CustomEvent('lmn-select', { detail: { selection: item.dataset.value } }));
         });
         menu.appendChild(item);
       });
