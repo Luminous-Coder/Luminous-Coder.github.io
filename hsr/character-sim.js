@@ -42,17 +42,15 @@
   function Dropdown(items) {
     let result = document.createElement('div');
     result.classList.add('dropdown');
-    let state = false;
 
     let btn = Button();
     btn.addEventListener('click', () => {
-      state = !state;
-      render();
+      menu.classList.toggle('hidden');
     });
     result.appendChild(btn);
 
     let menu = document.createElement('ul');
-    menu.classList.add('dropdown-menu');
+    menu.classList.add('dropdown-menu', 'hidden');
     result.setItems = function (items) {
       menu.replaceChildren();
       items.forEach((item) => {
@@ -67,15 +65,9 @@
 
     document.addEventListener('click', (event) => {
       if (event.target !== btn) {
-        state = false;
-        render();
+        menu.classList.add('hidden');
       }
     });
-
-    const render = () => {
-      menu.hidden = !state;
-    };
-    render();
 
     Object.defineProperty(result, 'button', {
       get() {
@@ -87,11 +79,10 @@
 
   function createModal(title, ...contents) {
     let result = document.createElement('div');
-    result.classList.add('modal-container');
-    result.hidden = true;
+    result.classList.add('modal-container', 'hidden');
     result.addEventListener('click', (event) => {
       if (!event.target.closest('.modal'))
-        result.hidden = true;
+        result.classList.add('hidden');
     });
 
     let modal = document.createElement('div');
@@ -105,7 +96,7 @@
     close.classList.add('btn');
     close.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     close.addEventListener('click', () => {
-      result.hidden = true;
+      result.classList.add('hidden');
     });
     modal.appendChild(modalHeader).append(modalTitle, close);
 
@@ -174,7 +165,7 @@
       item.style.setProperty('--avatar-border-color', data.types[character.type].color);
       item.addEventListener('click', () => {
         broker.publish('character', id);
-        modal.hidden = true;
+        modal.classList.add('hidden');
       });
       listUpdaters.push(() => {
         if ((filterState.paths[character.path] || Object.values(filterState.paths).every((x) => !x))
@@ -196,7 +187,7 @@
     button.classList.add('block');
     broker.subscribe('character', (id) => button.textContent = data.characters[id].name[lang]);
     button.addEventListener('click', () => {
-      modal.hidden = false;
+      modal.classList.remove('hidden');
     });
     app.appendChild(button);
   }
