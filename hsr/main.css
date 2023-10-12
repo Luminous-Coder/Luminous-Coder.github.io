@@ -20,7 +20,7 @@
   z-index: 1;
   top: 100%;
   left: 8px;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: calc(100% - 16px);
   height: fit-content;
   max-height: 50vh;
@@ -47,8 +47,8 @@
 .modal {
   display: flex;
   flex-flow: column nowrap;
-  width: 50vw;
-  max-height: 90vh;
+  max-width: 896px;
+  max-height: 80vh;
   margin: 5vh auto;
   border: 1px solid #696969;
   border-radius: 4px;
@@ -104,13 +104,14 @@ footer {
 
 .filter {
   display: flex;
+  overflow-x: auto;
   flex-direction: row;
-  margin-bottom: 16px;
   width: 100%;
+  margin-bottom: 16px;
 }
 .filter .btn {
+  min-width: 40px;
   margin: 4px;
-  min-width: 0;
 }
 .filter .btn.active {
   --avatar-border-color: #FFFFFF;
