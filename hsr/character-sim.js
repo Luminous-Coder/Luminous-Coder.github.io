@@ -52,13 +52,12 @@
     let menu = document.createElement('ul');
     menu.classList.add('dropdown-menu', 'hidden');
     result.setItems = function (items) {
-      menu.replaceChildren();
       items.forEach((item) => {
         item.addEventListener('click', () => {
           result.dispatchEvent(new CustomEvent('lmn-select', { detail: { selection: item.dataset.value } }));
         });
-        menu.appendChild(item);
       });
+      menu.replaceChildren(...items);
     };
     result.setItems(items);
     result.appendChild(menu);
@@ -200,7 +199,15 @@
         if (lightCone.path === data.characters[character].path) {
           let item = document.createElement('li');
           item.dataset.value = id;
-          item.textContent = lightCone.name[lang];
+          let img = document.createElement('img');
+          img.src = `./assets/light-cones/${id}.png`;
+          img.style.display = 'inline';
+          img.style.verticalAlign = 'middle';
+          img.style.height = '60px';
+          img.style.marginRight = '8px';
+          let name = document.createElement('span');
+          name.textContent = lightCone.name[lang];
+          item.append(img, name);
           items.push(item);
         }
       }
