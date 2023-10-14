@@ -130,6 +130,7 @@
       btn.classList.add('btn', 'avatar');
       btn.addEventListener('click', () => {
         filterState.paths[path] = !filterState.paths[path];
+        filterState.paths.allDisabled = Object.values(filterState.paths).every((x) => !x);
         listUpdaters.forEach((f) => f());
         btn.classList.toggle('active');
       });
@@ -144,6 +145,7 @@
       btn.classList.add('btn', 'avatar');
       btn.addEventListener('click', () => {
         filterState.types[type] = !filterState.types[type];
+        filterState.types.allDisabled = Object.values(filterState.types).every((x) => !x);
         listUpdaters.forEach((f) => f());
         btn.classList.toggle('active');
       });
@@ -167,8 +169,8 @@
         modal.classList.add('hidden');
       });
       listUpdaters.push(() => {
-        if ((filterState.paths[character.path] || Object.values(filterState.paths).every((x) => !x))
-          && (filterState.types[character.type] || Object.values(filterState.types).every((x) => !x))) {
+        if ((filterState.paths[character.path] || filterState.paths.allDisabled)
+          && (filterState.types[character.type] || filterState.types.allDisabled)) {
           item.classList.remove('hidden');
         } else {
           item.classList.add('hidden');
