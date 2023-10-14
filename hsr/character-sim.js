@@ -122,7 +122,7 @@
   };
   { // Character modal subcomponent.
     let listUpdaters = [];
-    let filterState = { paths: {}, types: {} };
+    let filterState = { paths: { allDisabled: true }, types: { allDisabled: true } };
     let filter = document.createElement('ul');
     filter.classList.add('filter');
     for (const path in data.paths) {
