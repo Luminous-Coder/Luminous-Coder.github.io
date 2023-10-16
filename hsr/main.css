@@ -151,3 +151,40 @@ footer {
 .panel-value {
   margin-left: auto;
 }
+
+#share {
+  display: inline-block;
+  margin: 8px;
+  padding: 4px;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  background-color: #343434;
+}
+#share:hover {
+  background-color: #4A4A4A;
+}
+
+.action-toast {
+  position: fixed;
+  right: 0;
+  bottom: 25vh;
+  left: 0;
+  overflow: hidden;
+  width: fit-content;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 8px;
+  animation: 0.5s ease-in 1s action-toast;
+  white-space: nowrap;
+  border-radius: 50px;
+  background-color: #4A4A4A;
+}
+
+@keyframes action-toast {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

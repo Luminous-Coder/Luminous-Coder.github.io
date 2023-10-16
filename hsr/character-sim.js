@@ -249,5 +249,30 @@
     }
     app.appendChild(panel);
   }
-  broker.publish('character', '0000');
+  { // Sharing button.
+    let sharingUrl = new URL(location);
+    broker.subscribe('character', (id) => sharingUrl.searchParams.set('character', id));
+    broker.subscribe('lightCone', (id) => sharingUrl.searchParams.set('lightCone', id));
+    let toast = document.createElement('div');
+    toast.classList.add('action-toast', 'hidden');
+    document.body.appendChild(toast);
+    let btn = Button();
+    btn.id = 'share';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(sharingUrl.href);
+        toast.innerHTML = `<i class="fa-solid fa-link"></i> Link copied.`;
+      } catch (err) {
+        console.warn('Failed to write the sharing URL to the clipboard.');
+        toast.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Failed to copy.`;
+      }
+      toast.classList.remove('hidden');
+      toast.addEventListener('animationend', () => toast.classList.add('hidden'));
+    });
+    app.appendChild(btn).append('Share');
+  }
+
+  let queries = new URLSearchParams(location.search);
+  broker.publish('character', queries.get('character') ?? '0000');
+  broker.publish('lightCone', queries.get('lightCone') ?? '');
 })();
