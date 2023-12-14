@@ -252,7 +252,7 @@
   { // Sharing button.
     let sharingUrl = new URL(location);
     broker.subscribe('character', (id) => sharingUrl.searchParams.set('character', id));
-    broker.subscribe('lightCone', (id) => sharingUrl.searchParams.set('lightCone', id));
+    broker.subscribe('lightCone', (id) => sharingUrl.searchParams.set('light_cone', id));
     let toast = document.createElement('div');
     toast.classList.add('action-toast', 'hidden');
     document.body.appendChild(toast);
@@ -274,5 +274,5 @@
 
   let queries = new URLSearchParams(location.search);
   broker.publish('character', queries.get('character') ?? '0000');
-  broker.publish('lightCone', queries.get('lightCone') ?? '');
+  broker.publish('lightCone', queries.get('light_cone') ?? '');
 })();
