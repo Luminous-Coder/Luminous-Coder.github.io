@@ -135,7 +135,7 @@
         btn.classList.toggle('active');
       });
       let img = document.createElement('img');
-      img.src = `./assets/paths/${path}.png`;
+      img.src = `./assets/paths/${path}.webp`;
       img.alt = data.paths[path][lang];
       filter.appendChild(btn).append(img);
       filterState.paths[path] = false;
@@ -150,7 +150,7 @@
         btn.classList.toggle('active');
       });
       let img = document.createElement('img');
-      img.src = `./assets/types/${type}.png`;
+      img.src = `./assets/types/${type}.webp`;
       img.alt = data.types[type][lang];
       filter.appendChild(btn).append(img);
       filterState.types[type] = false;
@@ -177,7 +177,7 @@
         }
       });
       let img = document.createElement('img');
-      img.src = `./assets/characters/${id}.png`;
+      img.src = `./assets/characters/${id}.webp`;
       let name = document.createElement('span');
       name.textContent = character.name[lang];
       list.appendChild(item).append(img, name);
@@ -202,7 +202,7 @@
           let item = document.createElement('li');
           item.dataset.value = id;
           let img = document.createElement('img');
-          img.src = `./assets/light-cones/${id}.png`;
+          img.src = `./assets/light-cones/${id}.webp`;
           img.style.display = 'inline';
           img.style.verticalAlign = 'middle';
           img.style.height = '60px';
