@@ -51,15 +51,12 @@
 
     let menu = document.createElement('ul');
     menu.classList.add('dropdown-menu', 'hidden');
-    result.setItems = function (items) {
-      items.forEach((item) => {
-        item.addEventListener('click', () => {
-          result.dispatchEvent(new CustomEvent('lmn-select', { detail: { selection: item.dataset.value } }));
-        });
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        result.dispatchEvent(new CustomEvent('lmn-select', { detail: { selection: item.dataset.value } }));
       });
-      menu.replaceChildren(...items);
-    };
-    result.setItems(items);
+    });
+    menu.replaceChildren(...items);
     result.appendChild(menu);
 
     document.addEventListener('click', (event) => {
@@ -196,12 +193,11 @@
     app.appendChild(button);
   }
   { // Light cone dropdown subcomponent.
-    let dropdown = Dropdown([]);
-    broker.subscribe('character', (character) => {
-      let items = [];
-      for (const id of Object.keys(data.lightCones).sort()) {
-        let lightCone = data.lightCones[id];
-        if (lightCone.path === data.characters[character].path) {
+    let dropdown = Dropdown(
+      Object.keys(data.lightCones)
+        .sort()
+        .map((id) => {
+          const lightCone = data.lightCones[id];
           let item = document.createElement('li');
           item.dataset.value = id;
           let img = document.createElement('img');
@@ -214,10 +210,13 @@
           let name = document.createElement('span');
           name.textContent = lightCone.name[lang];
           item.append(img, name);
-          items.push(item);
-        }
-      }
-      dropdown.setItems(items);
+          broker.subscribe('character', (character) => {
+            item.classList.toggle('hidden', lightCone.path !== data.characters[character].path);
+          });
+          return item;
+        })
+    );
+    broker.subscribe('character', (character) => {
       broker.publish('lightCone', '');
     });
     dropdown.button.classList.add('block');
