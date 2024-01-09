@@ -157,7 +157,7 @@
 
     let list = document.createElement('ul');
     list.classList.add('grid-list');
-    for (const id of Object.keys(data.characters).sort()) {
+    for (const id of Object.keys(data.characters)) {
       let character = data.characters[id];
       let item = document.createElement('li');
       item.classList.add('btn', 'avatar');
@@ -195,7 +195,6 @@
   { // Light cone dropdown subcomponent.
     let dropdown = Dropdown(
       Object.keys(data.lightCones)
-        .sort()
         .map((id) => {
           const lightCone = data.lightCones[id];
           let item = document.createElement('li');
@@ -276,6 +275,6 @@
   }
 
   let queries = new URLSearchParams(location.search);
-  broker.publish('character', queries.get('character') ?? '0000');
+  broker.publish('character', queries.get('character') ?? '10000');
   broker.publish('lightCone', queries.get('light_cone') ?? '');
 })();
