@@ -194,6 +194,7 @@
   { // Light cone dropdown subcomponent.
     let dropdown = Dropdown(
       Object.entries(data.lightCones)
+        .filter(([id]) => id !== '')
         .map(([id, lightCone]) => {
           let item = document.createElement('li');
           item.dataset.value = id;
