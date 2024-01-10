@@ -157,8 +157,7 @@
 
     let list = document.createElement('ul');
     list.classList.add('grid-list');
-    for (const id of Object.keys(data.characters)) {
-      let character = data.characters[id];
+    for (const [id, character] of Object.entries(data.characters)) {
       let item = document.createElement('li');
       item.classList.add('btn', 'avatar');
       item.style.width = '80px';
@@ -194,9 +193,8 @@
   }
   { // Light cone dropdown subcomponent.
     let dropdown = Dropdown(
-      Object.keys(data.lightCones)
-        .map((id) => {
-          const lightCone = data.lightCones[id];
+      Object.entries(data.lightCones)
+        .map(([id, lightCone]) => {
           let item = document.createElement('li');
           item.dataset.value = id;
           let img = document.createElement('img');
