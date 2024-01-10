@@ -1,5 +1,7 @@
 (async () => {
   const data = await (await fetch('./assets/data.json')).json();
+  data.characters = new Map(data.characters);
+  data.lightCones = new Map(data.lightCones);
 
   let lang = 'zh-TW';
 
@@ -8,7 +10,7 @@
   }
 
   function getCharacter(id, lvl) {
-    const { name, rarity, path, type, ...base } = data.characters[id];
+    const { name, rarity, path, type, ...base } = data.characters.get(id);
     let result = {
       lvl: Math.floor(lvl),
       critRate: 0.05,
@@ -22,7 +24,7 @@
   }
 
   function getLightCone(id, lvl) {
-    const { name, rarity, path, ...base } = data.lightCones[id];
+    const { name, rarity, path, ...base } = data.lightCones.get(id);
     let result = { lvl: Math.floor(lvl), ...base };
     for (const x of ['hp', 'atk', 'def']) {
       result[x] = base[x] * (1 + ((result.lvl - 1) * 0.15));
@@ -157,8 +159,7 @@
 
     let list = document.createElement('ul');
     list.classList.add('grid-list');
-    for (const id of Object.keys(data.characters).sort()) {
-      let character = data.characters[id];
+    for (const [id, character] of data.characters.entries()) {
       let item = document.createElement('li');
       item.classList.add('btn', 'avatar');
       item.style.width = '80px';
@@ -186,7 +187,7 @@
     let modal = createModal('Character', filter, list);
     let button = Button();
     button.classList.add('block');
-    broker.subscribe('character', (id) => button.textContent = data.characters[id].name[lang]);
+    broker.subscribe('character', (id) => button.textContent = data.characters.get(id).name[lang]);
     button.addEventListener('click', () => {
       modal.classList.remove('hidden');
     });
@@ -194,10 +195,8 @@
   }
   { // Light cone dropdown subcomponent.
     let dropdown = Dropdown(
-      Object.keys(data.lightCones)
-        .sort()
-        .map((id) => {
-          const lightCone = data.lightCones[id];
+      [...data.lightCones.entries()]
+        .map(([id, lightCone]) => {
           let item = document.createElement('li');
           item.dataset.value = id;
           let img = document.createElement('img');
@@ -211,7 +210,7 @@
           name.textContent = lightCone.name[lang];
           item.append(img, name);
           broker.subscribe('character', (character) => {
-            item.classList.toggle('hidden', lightCone.path !== data.characters[character].path);
+            item.classList.toggle('hidden', lightCone.path !== data.characters.get(character).path);
           });
           return item;
         })
@@ -220,7 +219,7 @@
       broker.publish('lightCone', '');
     });
     dropdown.button.classList.add('block');
-    broker.subscribe('lightCone', (id) => dropdown.button.textContent = data.lightCones[id].name[lang]);
+    broker.subscribe('lightCone', (id) => dropdown.button.textContent = data.lightCones.get(id).name[lang]);
     dropdown.addEventListener('lmn-select', (event) => {
       broker.publish('lightCone', event.detail.selection);
     });
