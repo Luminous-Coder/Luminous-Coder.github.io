@@ -107,6 +107,7 @@
 
   const app = document.getElementById('app');
   const broker = {
+    states: {},
     subscribers: {},
     subscribe(event, callback) {
       if (!this.subscribers[event]) this.subscribers[event] = [];
@@ -114,6 +115,7 @@
     },
     publish(event, data) {
       if (!this.subscribers[event]) this.subscribers[event] = [];
+      this.states[event] = data;
       this.subscribers[event].forEach(callback => callback(data));
     },
   };
@@ -212,7 +214,7 @@
             item.classList.toggle('hidden', lightCone.path !== data.characters[character].path);
           });
           return item;
-        })
+        }),
     );
     broker.subscribe('character', (character) => {
       broker.publish('lightCone', '');
@@ -251,9 +253,6 @@
     app.appendChild(panel);
   }
   { // Sharing button.
-    let sharingUrl = new URL(location);
-    broker.subscribe('character', (id) => sharingUrl.searchParams.set('character', id));
-    broker.subscribe('lightCone', (id) => sharingUrl.searchParams.set('light_cone', id));
     let toast = document.createElement('div');
     toast.classList.add('action-toast', 'hidden');
     document.body.appendChild(toast);
@@ -261,7 +260,9 @@
     btn.id = 'share';
     btn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(sharingUrl.href);
+        let url = new URL(location);
+        url.hash = `character=${broker.states.character}&light_cone=${broker.states.lightCone}`;
+        await navigator.clipboard.writeText(url.href);
         toast.innerHTML = `<i class="fa-solid fa-link"></i> Link copied.`;
       } catch (err) {
         console.warn('Failed to write the sharing URL to the clipboard.');
@@ -273,7 +274,12 @@
     app.appendChild(btn).append('Share');
   }
 
-  let queries = new URLSearchParams(location.search);
-  broker.publish('character', queries.get('character') ?? '10000');
-  broker.publish('lightCone', queries.get('light_cone') ?? '');
+  let params = Object.fromEntries(
+    location.hash
+      .slice(1)
+      .split('&')
+      .map((str) => str.split('=', 2)),
+  );
+  broker.publish('character', params.character ?? '10000');
+  broker.publish('lightCone', params.light_cone ?? '');
 })();
